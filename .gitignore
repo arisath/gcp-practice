@@ -1,0 +1,7 @@
+*.json
+*.class
+*.jar
+target/
+.idea/
+*.xml
+*.iml
