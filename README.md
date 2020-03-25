@@ -1,5 +1,5 @@
 # GCP Practice
-Playing around with the Google Cloud Platform (GCP) sdk
+Playing around with the Google Cloud Platform (GCP) sdks
 
 [![Generic badge](https://img.shields.io/badge/GCP-SpringBoot-<COLOR>.svg)](https://shields.io/)
 
