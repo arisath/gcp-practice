@@ -1,8 +1,9 @@
 package com.example.controller;
 
 import com.example.model.Message;
+import com.example.service.AsynchronousSubscriberService;
 import com.example.service.PublisherService;
-import com.example.service.SubscriberService;
+import com.example.service.AsynchronousSubscriberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +17,7 @@ public class Controller {
     private PublisherService publisherService;
 
 	@Autowired
-	private SubscriberService subscriberService;
+	private AsynchronousSubscriberService asynchronousSubscriberService;
 
     @PostMapping("/publish")
     public String publish(@RequestBody Message message) throws Exception {
@@ -27,7 +28,7 @@ public class Controller {
 
     @GetMapping("/receive")
     public String receive() throws Exception {
-		subscriberService.receive();
+        asynchronousSubscriberService.createSubscriberWithSyncPull(3);
 
 		return "Messages received";
     }
