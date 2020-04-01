@@ -2,7 +2,7 @@
 Playing around with the Google Cloud Platform (GCP) sdks
 
 [![Generic badge](https://img.shields.io/badge/GCP-SpringBoot-<COLOR>.svg)](https://shields.io/)
-[![GitHub last commit](https://img.shields.io/github/last-commit/clong/DetectionLab.svg?style=flat-square)](https://github.com/arisath/gcp-practice/commit/master)
+[![GitHub last commit](https://img.shields.io/github/last-commit/arisath/gcp-practice.svg?style=flat-square)](https://github.com/arisath/gcp-practice/commit/master)
 
 
 ### Prerequisites
