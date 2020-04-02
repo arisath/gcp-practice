@@ -34,13 +34,9 @@ public class Controller
     public String receive(@RequestParam(required = false) Integer numberOfMessages) throws Exception
     {
 
-        System.out.println();
-
         if (numberOfMessages == null)
         {
-            List<ReceivedMsg> list = asynchronousSubscriberService.createSubscriberWithSyncPull(5);
-
-            return new Gson().toJson(list);
+            return new Gson().toJson(asynchronousSubscriberService.createSubscriberWithSyncPull(5));
         }
 
         if (numberOfMessages < 0)
@@ -49,9 +45,7 @@ public class Controller
         }
         else
         {
-            List<ReceivedMsg> list = asynchronousSubscriberService.createSubscriberWithSyncPull(numberOfMessages);
-
-            return new Gson().toJson(list);
+            return new Gson().toJson(asynchronousSubscriberService.createSubscriberWithSyncPull(numberOfMessages));
         }
 
     }
