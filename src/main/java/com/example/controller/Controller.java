@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-public class Controller {
+public class Controller
+{
 
     @Autowired
     private PublisherService publisherService;
@@ -22,27 +23,32 @@ public class Controller {
     private AsynchronousSubscriberService asynchronousSubscriberService;
 
     @PostMapping("/publish")
-    public String publish(@RequestBody Message message) throws Exception {
+    public String publish(@RequestBody Message message) throws Exception
+    {
         publisherService.publish(message.getMessage());
 
         return "Message submitted to Pub/Sub";
     }
 
     @GetMapping("/receive")
-    public String receive(@RequestParam(required = false) Integer numberOfMessages) throws Exception {
+    public String receive(@RequestParam(required = false) Integer numberOfMessages) throws Exception
+    {
 
         System.out.println();
 
-        if(numberOfMessages==null)
+        if (numberOfMessages == null)
         {
             List<ReceivedMsg> list = asynchronousSubscriberService.createSubscriberWithSyncPull(5);
 
             return new Gson().toJson(list);
         }
 
-        if (numberOfMessages < 0) {
+        if (numberOfMessages < 0)
+        {
             return "";
-        } else {
+        }
+        else
+        {
             List<ReceivedMsg> list = asynchronousSubscriberService.createSubscriberWithSyncPull(numberOfMessages);
 
             return new Gson().toJson(list);

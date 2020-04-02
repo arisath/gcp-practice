@@ -14,40 +14,45 @@ import java.util.ArrayList;
 import java.util.List;
 
 @org.springframework.stereotype.Service
-public class PublisherService {
+public class PublisherService
+{
 
     private static final String PROJECT_ID = ServiceOptions.getDefaultProjectId();
 
     @Value("${topic}")
     private String topic;
 
-    public void publish(String message) throws Exception {
+    public void publish(String message) throws Exception
+    {
 
-    String topicId = topic;
-    ProjectTopicName topicName = ProjectTopicName.of(PROJECT_ID, topicId);
-    Publisher publisher = null;
-    List<ApiFuture<String>> futures = new ArrayList<>();
+        String topicId = topic;
+        ProjectTopicName topicName = ProjectTopicName.of(PROJECT_ID, topicId);
+        Publisher publisher = null;
+        List<ApiFuture<String>> futures = new ArrayList<>();
 
-        try {
+        try
+        {
 
             publisher = Publisher.newBuilder(topicName).build();
 
             ByteString data = ByteString.copyFromUtf8(message);
-            PubsubMessage pubsubMessage = PubsubMessage.newBuilder()
-                    .setData(data)
-                    .build();
+            PubsubMessage pubsubMessage = PubsubMessage.newBuilder().setData(data).build();
 
             ApiFuture<String> future = publisher.publish(pubsubMessage);
             futures.add(future);
 
-        } finally {
+        }
+        finally
+        {
             List<String> messageIds = ApiFutures.allAsList(futures).get();
 
-            for (String messageId : messageIds) {
+            for (String messageId : messageIds)
+            {
                 System.out.println(messageId);
             }
 
-            if (publisher != null) {
+            if (publisher != null)
+            {
                 publisher.shutdown();
             }
         }
