@@ -55,9 +55,6 @@ public class AsynchronousSubscriberService {
     }
 
 
-
-
-
     public List<ReceivedMsg> createSubscriberWithSyncPull(
             int numOfMessages) throws Exception {
         // [START pubsub_subscriber_sync_pull]
@@ -107,7 +104,6 @@ public class AsynchronousSubscriberService {
         }
         // [END pubsub_subscriber_sync_pull]
     }
-
 
 
 }
