@@ -1,5 +1,6 @@
 package com.example.service;
 
+import com.example.model.ReceivedMsg;
 import com.google.cloud.ServiceOptions;
 import com.google.cloud.pubsub.v1.AckReplyConsumer;
 import com.google.cloud.pubsub.v1.MessageReceiver;
@@ -57,7 +58,7 @@ public class AsynchronousSubscriberService {
 
 
 
-    public List<ReceivedMessage> createSubscriberWithSyncPull(
+    public List<ReceivedMsg> createSubscriberWithSyncPull(
             int numOfMessages) throws Exception {
         // [START pubsub_subscriber_sync_pull]
         SubscriberStubSettings subscriberStubSettings =
@@ -83,10 +84,15 @@ public class AsynchronousSubscriberService {
             // use pullCallable().futureCall to asynchronously perform this operation
             PullResponse pullResponse = subscriber.pullCallable().call(pullRequest);
             List<String> ackIds = new ArrayList<>();
+            List<ReceivedMsg> listOfMessages = new ArrayList<>();
+
             for (ReceivedMessage message : pullResponse.getReceivedMessagesList()) {
                 // handle received message
                 // ...
+                listOfMessages.add(new ReceivedMsg(message));
                 System.out.println(message.getMessage());
+                System.out.println(message.getMessage().getData());
+
                 ackIds.add(message.getAckId());
             }
             // acknowledge received messages
@@ -97,7 +103,7 @@ public class AsynchronousSubscriberService {
                             .build();
             // use acknowledgeCallable().futureCall to asynchronously perform this operation
             subscriber.acknowledgeCallable().call(acknowledgeRequest);*/
-            return pullResponse.getReceivedMessagesList();
+            return listOfMessages;
         }
         // [END pubsub_subscriber_sync_pull]
     }
