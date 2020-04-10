@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gcp-practice-deployment
+  labels:
+    app: gcp-practice
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: gcp-practice
+  template:
+    metadata:
+      labels:
+        app: gcp-practice
+    spec:
+      containers:
+        - name: gcp-practice-container
+          image: eu.gcr.io/lunar-carving-270816/example
+          ports:
+            - containerPort: 8080
