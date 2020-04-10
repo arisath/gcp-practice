@@ -8,7 +8,8 @@ Playing around with the Google Cloud Platform (GCP) sdks
 [![CircleCI](https://circleci.com/gh/arisath/gcp-practice/tree/master.svg?style=svg)](https://circleci.com/gh/arisath/gcp-practice/tree/master)
 ### Services
 <img src="https://cloud-cdn.safe.com/fmehub/fmepackageversion/safe/google-cloud-pubsub/item-logo/1576188656.png" width="48">
-<img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fgithub.com%2FFortAwesome%2FFont-Awesome%2Fissues%2F13331&psig=AOvVaw3K1YHgnAU1_QolWIneWw5J&ust=1586647033677000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCNiWj_z-3ugCFQAAAAAdAAAAABAD" width="48">
+<img src="https://user-images.githubusercontent.com/19824574/41482054-47a3a702-70a2-11e8-9561-de51c5f71220.png" width="48">
+
 
 
 ### Prerequisites
